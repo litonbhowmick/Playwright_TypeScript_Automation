@@ -9,4 +9,6 @@ test('Login into an application', async ({loginpage, homepage}) => {
 
   await homepage.log_off();
 
+  console.log("Logging off from the application!!")
+
 });
