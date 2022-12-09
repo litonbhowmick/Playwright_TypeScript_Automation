@@ -105,12 +105,16 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 3128,
+                  "duration": 3188,
                   "errors": [],
-                  "stdout": [],
+                  "stdout": [
+                    {
+                      "text": "Logging off from the application!!\n"
+                    }
+                  ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2022-12-08T09:14:50.245Z",
+                  "startTime": "2022-12-09T09:15:16.376Z",
                   "attachments": [
                     {
                       "name": "screenshot",

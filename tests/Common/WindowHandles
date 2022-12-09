@@ -1,0 +1,30 @@
+import { Page } from "@playwright/test";
+
+class WindowHandles {
+
+    page: Page;
+
+    constructor(page: Page) {
+        this.page = page;
+    }
+
+    async getElementTextFromNthWindow(textlocator: string, clicklocator: string, pagetitle: string) {
+
+        const [windows] = await Promise.all([
+            this.page.waitForEvent('popup'),
+            this.page.locator(clicklocator).click(),
+        ]);
+
+        const all_windows = windows.context().pages();
+        var text;
+        for await (const window of all_windows) {
+            if ((await window.title()).match(pagetitle)) {
+                text = window.locator(textlocator).textContent();
+            }
+        }
+
+        return text;
+    }
+
+
+}

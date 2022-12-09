@@ -2,9 +2,11 @@ import customtest from "@playwright/test";
 import { Page } from "@playwright/test";
 import { LoginPage } from "../tests/PageLayers/Login";
 import { HomePage } from "../tests/PageLayers/Homepage";
+import { Dropdown } from "../tests/Common/Dropdown";
 
 const url: string = "https://www.saucedemo.com/";
 var testpages;
+var dropdown : Dropdown;
 
 type pages = {
     page: Page,
@@ -13,6 +15,7 @@ type pages = {
 };
 
 testpages = customtest.beforeEach(async ({ page }) => {
+    dropdown = new Dropdown(page);
     await page.goto(url);
     await page.waitForLoadState('networkidle');
 });
