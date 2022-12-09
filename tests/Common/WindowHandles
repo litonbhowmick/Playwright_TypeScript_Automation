@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 
-class WindowHandles {
+export class WindowHandles {
 
     page: Page;
 
@@ -16,12 +16,17 @@ class WindowHandles {
         ]);
 
         const all_windows = windows.context().pages();
+
         var text;
         for await (const window of all_windows) {
             if ((await window.title()).match(pagetitle)) {
-                text = window.locator(textlocator).textContent();
+                text = await window.locator(textlocator).textContent();
             }
         }
+
+        /*
+         * use all_windows[2] to go to second window/page/tab
+         */
 
         return text;
     }
